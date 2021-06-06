@@ -29,7 +29,7 @@ const SearchStyle = styled.div`
 
   input {
     width: 100%;
-    background: white;
+    background: #f8f8f8;
     padding: 5px;
     border-radius: 2px;
     border: 1px solid slategray;
@@ -80,7 +80,7 @@ const Search = () => {
                 type: "search",
                 placeholder: "Search by first name",
                 id: "search",
-
+                role: "search",
                 onChange: (e) => {
                   e.persist();
                   handleInput(e);

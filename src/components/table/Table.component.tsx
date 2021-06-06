@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const STable = styled.table`
-  background-color: white;
-  border: 1px solid darkgrey;
+  background-color: #f9f9f9;
   border-spacing: 0px;
-  border-radius: 2px;
   font-size: 12px;
   width: 100%;
 
   th {
-    color: black;
+    color: #191919;
     font-weight: 600;
     letter-spacing: 0.5px;
     padding: 14px 8px;
@@ -23,7 +21,7 @@ const STable = styled.table`
   }
 
   td {
-    color: black;
+    color: #191919;
     max-width: 480px;
     padding: 8px;
     white-space: normal;
@@ -52,7 +50,12 @@ const STable = styled.table`
   }
 `;
 
-export const Table = ({ tableHead, tableData }: any) => {
+interface TableProps {
+  tableHead: string[];
+  tableData: { [key: string]: any }[];
+}
+
+export const Table = ({ tableHead, tableData }: TableProps) => {
   return (
     <STable>
       {tableHead !== undefined ? (
@@ -78,9 +81,9 @@ export const Table = ({ tableHead, tableData }: any) => {
         </thead>
       ) : null}
       <tbody>
-        {tableData.map((data: any[], index: React.Key) => (
+        {tableData.map((data, index: React.Key) => (
           <tr key={index}>
-            {data.map((prop, index) => {
+            {data.map((prop: any, index: number) => {
               return <td key={index}>{prop}</td>;
             })}
           </tr>

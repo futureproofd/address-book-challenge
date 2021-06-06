@@ -12,6 +12,9 @@ import Search from "../../search/Search.component";
 const SUsersTableContainer = styled.div`
   overflow: auto;
   height: 500px;
+  border: 1px solid darkgrey;
+  border-spacing: 0px;
+  border-radius: 2px;
 `;
 
 const SUsersTableLink = styled.span`
@@ -58,7 +61,6 @@ export const AddressBookList = () => {
           <Search />
           <SUsersTableContainer>
             <Table
-              className="users-table"
               tableHead={["Name", "Email", "Location", "Age", "Gender"]}
               tableData={getTableData(users)}
             />

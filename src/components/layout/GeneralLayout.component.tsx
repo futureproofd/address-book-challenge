@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import Context, {
   AddressBookContextProvider,
 } from "../../context/AddressBookContext";
 import { useFetch } from "../../hooks/useFetch";
 import { componentRoutes } from "../../route/routes";
+import { sortAlphabetically } from "../../utils/randomUserUtils";
 
 const SAppContainer = styled.div`
   display: flex;
@@ -14,10 +15,11 @@ const SAppContainer = styled.div`
 
   header {
     background-color: #282c34;
+    box-shadow: 0 0px 8px 3px rgba(0, 0, 0, 0.6);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: calc(10px + 2vmin);
     margin-bottom: 20px;
     padding: 20px;
@@ -77,7 +79,7 @@ export const GeneralLayout = () => {
   // Set Users state after data (users) are fetched.
   useEffect(() => {
     if ((data as RandomUserResponse)?.results?.length) {
-      setUsers(data.results);
+      setUsers(data.results.sort(sortAlphabetically));
     }
   }, [data]);
 

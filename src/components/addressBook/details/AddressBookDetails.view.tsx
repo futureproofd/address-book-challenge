@@ -12,7 +12,7 @@ const SCardContainer = styled.div`
   width: 100%;
   background: #fff;
   border-radius: 3px;
-  box-shadow: 1px 2px 3px rgba(96, 96, 96, 0.5);
+  box-shadow: 0 0px 8px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
   z-index: 5;

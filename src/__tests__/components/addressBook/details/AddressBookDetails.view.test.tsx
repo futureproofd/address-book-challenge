@@ -1,8 +1,6 @@
 import { render as rtlRender, screen } from "@testing-library/react";
 import { getMockRandomUserData } from "../../../mockData/mockRandomUserData";
-import Context, {
-  AddressBookContextProvider,
-} from "../../../../context/AddressBookContext";
+import Context from "../../../../context/AddressBookContext";
 import { AddressBookDetails } from "../../../../components/addressBook/details/AddressBookDetails.view";
 import userEvent from "@testing-library/user-event";
 import { createMemoryHistory } from "history";
@@ -48,12 +46,11 @@ describe("AddressBookDetails view", () => {
   });
 
   it("Navigates back to home route '/'", () => {
-    const { debug } = rtlRender(app);
+    rtlRender(app);
 
     const backButton = screen.getByText(/go back/i);
 
     userEvent.click(backButton);
-    debug();
 
     expect(history.push).toHaveBeenCalledWith("/");
   });
