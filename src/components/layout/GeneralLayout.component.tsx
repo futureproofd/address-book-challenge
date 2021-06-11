@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Context, {
@@ -7,6 +7,7 @@ import Context, {
 import { useFetch } from "../../hooks/useFetch";
 import { componentRoutes } from "../../route/routes";
 import { sortAlphabetically } from "../../utils/randomUserUtils";
+import { NavBar } from "./Navigation.component";
 
 const SAppContainer = styled.div`
   display: flex;
@@ -84,13 +85,13 @@ export const GeneralLayout = () => {
   }, [data]);
 
   return (
-    <SAppContainer>
-      <header>Address Book</header>
-      <main>
+    <div className="bg-gray-100 flex flex-col justify-center">
+      <NavBar />
+      <main className="md:container md:mx-auto mt-8">
         <Context.Provider value={addressBookContextData}>
           {getComponentRoutes()}
         </Context.Provider>
       </main>
-    </SAppContainer>
+    </div>
   );
 };

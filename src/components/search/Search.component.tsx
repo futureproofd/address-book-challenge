@@ -62,47 +62,47 @@ const Search = () => {
   };
 
   return (
-    <SearchStyle>
-      <Downshift
-        onChange={handleResultClick}
-        itemToString={(item) => (item === null ? "" : item.name.first)}
-      >
-        {({
-          getInputProps,
-          getItemProps,
-          isOpen,
-          inputValue,
-          highlightedIndex,
-        }) => (
-          <div>
-            <input
-              {...getInputProps({
-                type: "search",
-                placeholder: "Search by first name",
-                id: "search",
-                role: "search",
-                onChange: (e) => {
-                  e.persist();
-                  handleInput(e);
-                },
-              })}
-            />
-            {results && isOpen && (
-              <DropDown>
-                {results.map((item, index) => (
-                  <DropDownItem
-                    {...getItemProps({ item, index, key: item.email })}
-                    highlighted={index === highlightedIndex}
-                  >
-                    {`${item.name.first} ${item.name.last}`}
-                  </DropDownItem>
-                ))}
-              </DropDown>
-            )}
-          </div>
-        )}
-      </Downshift>
-    </SearchStyle>
+    <Downshift
+      onChange={handleResultClick}
+      itemToString={(item) => (item === null ? "" : item.name.first)}
+    >
+      {({
+        getInputProps,
+        getItemProps,
+        isOpen,
+        inputValue,
+        highlightedIndex,
+      }) => (
+        <div>
+          <input
+            name="serch"
+            className="bg-white h-10 px-5 pr-10 mb-6 rounded-md border-gray-800 text-sm focus:outline-none"
+            {...getInputProps({
+              type: "search",
+              placeholder: "Search by first name",
+              id: "search",
+              role: "search",
+              onChange: (e) => {
+                e.persist();
+                handleInput(e);
+              },
+            })}
+          />
+          {results && isOpen && (
+            <DropDown>
+              {results.map((item, index) => (
+                <DropDownItem
+                  {...getItemProps({ item, index, key: item.email })}
+                  highlighted={index === highlightedIndex}
+                >
+                  {`${item.name.first} ${item.name.last}`}
+                </DropDownItem>
+              ))}
+            </DropDown>
+          )}
+        </div>
+      )}
+    </Downshift>
   );
 };
 
